@@ -17,12 +17,12 @@ struct Edge {
 // Disjoint Set Union (DSU) or Union-Find data structure
 class DSU {
 private:
-    vector<int> parent, rank;
+    vector<int> parent, size;
 
 public:
     DSU(int n) {
         parent.resize(n);
-        rank.resize(n, 0);
+        size.resize(n, 1); // Initialize all sizes to 1
         for (int i = 0; i < n; ++i) {
             parent[i] = i;
         }
@@ -40,13 +40,13 @@ public:
         int rootY = find(y);
 
         if (rootX != rootY) {
-            if (rank[rootX] < rank[rootY]) {
+            // Attach smaller tree under larger tree
+            if (size[rootX] < size[rootY]) {
                 parent[rootX] = rootY;
-            } else if (rank[rootX] > rank[rootY]) {
-                parent[rootY] = rootX;
+                size[rootY] += size[rootX];
             } else {
                 parent[rootY] = rootX;
-                rank[rootX]++;
+                size[rootX] += size[rootY];
             }
         }
     }
@@ -93,4 +93,3 @@ int main() {
 
     return 0;
 }
-
