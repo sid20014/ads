@@ -1,13 +1,6 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-// Function to swap two elements
-void swap(int& a, int& b) {
-    int temp = a;
-    a = b;
-    b = temp;
-}
-
 // Function to partition the array
 int partition(int arr[], int low, int high, int& comparisons) {
     int pivot = arr[high];
