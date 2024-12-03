@@ -4,12 +4,6 @@
 
 using namespace std;
 
-// Function to swap two elements
-void swap(int& a, int& b) {
-    int temp = a;
-    a = b;
-    b = temp;
-}
 
 // Partition function similar to Quick Sort
 int partition(int arr[], int low, int high) {
